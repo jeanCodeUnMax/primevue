@@ -1,25 +1,28 @@
 <template>
+    div
     <div class="layout-wrapper" :class="containerClass">
         <div class="layout-news" v-if="newsActive">
             <div class="layout-news-container">
                 <a href="https://www.primefaces.org/store" target="_blank">
-                    <img class="layouts-news-mockup-image" src="./assets/images/topbar-primesale-2021.png">
+                    <img
+                        class="layouts-news-mockup-image"
+                        src="./assets/images/topbar-primesale-2021.png"
+                    />
                 </a>
-                <a href="https://www.primefaces.org/store" target="_blank" tabindex="-1" style="text-decoration: none" class="layout-news-button">
-                    LEARN MORE
-                </a>
-                <a tabindex="0" class="layout-news-close" @click="hideNews">
-                    <i class="pi pi-times"></i>
-                </a>
+                <a href="https://www.primefaces.org/store" target="_blank"
             </div>
         </div>
 
-        <app-topbar @menubutton-click="onMenuButtonClick" @change-theme="changeTheme" :theme="theme" />
+        <app-topbar
+            @menubutton-click="onMenuButtonClick"
+            @change-theme="changeTheme"
+            :theme="theme"
+        />
         <app-menu :active="sidebarActive" />
         <app-configurator @change-theme="changeTheme" :theme="theme" />
-        <div :class="['layout-mask', {'layout-mask-active': sidebarActive}]" @click="onMaskClick"></div>
+        <div :class="['layout-mask', { 'layout-mask-active': sidebarActive }]" @click="onMaskClick"></div>
         <div class="layout-content">
-            <router-view/>
+            <router-view />
             <app-footer />
         </div>
         <Toast />
@@ -31,10 +34,7 @@
 
 <script>
 import DomHandler from '@/components/utils/DomHandler';
-import AppTopBar from '@/AppTopBar.vue';
-import AppMenu from '@/AppMenu.vue';
-import AppFooter from '@/AppFooter.vue';
-import AppConfigurator from '@/AppConfigurator.vue';
+igurator.vue';
 import EventBus from '@/AppEventBus';
 
 export default {
@@ -47,7 +47,7 @@ export default {
     },
     mounted() {
         if (this.isOutdatedIE()) {
-            this.$toast.add({severity: 'warn', summary: 'Limited Functionality', detail: 'Although PrimeVue supports IE11, ThemeSwitcher in this application cannot be not fully supported by your browser. Please use a modern browser for the best experience of the showcase.'});
+            this.$toast.add({ severity: 'warn', summary: 'Limited Functionality', detail: 'Although PrimeVue supports IE11, ThemeSwitcher in this application cannot be not fully supported by your browser. Please use a modern browser for the best experience of the showcase.' });
         }
 
         this.newsActive = this.newsActive && sessionStorage.getItem('primevue-news-hidden') == null;
@@ -172,5 +172,5 @@ export default {
 </script>
 
 <style lang="scss">
-@import './assets/styles/app/app.scss';
+@import "./assets/styles/app/app.scss";
 </style>
